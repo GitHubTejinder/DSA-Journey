@@ -9,9 +9,11 @@ What is Compilation?
 
 What is an Efficient Algorithm?
 - Algorithm that can solve the problem or accompolish the task in minimum numbers of iterations or quickly is the Efficient algorithm.
+- UPDATED - that can solve the problem with minimum resources.
 
 What is Big-O?
 - Is the notation to define the time that the algorithm takes to solve the problem or accompolish the task.
+- UPDATED - describes how the running time (or space usage) grows as the input size increases.
 
 Why is Binary Search Faster?
 - Because it eliminates the half the options with each iteration.
