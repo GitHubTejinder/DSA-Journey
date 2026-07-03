@@ -92,3 +92,186 @@ As a senior engineer, you've already been designing algorithms throughout your c
 ## ⭐ Mentor Notes
 
 Don't memorize Big-O values. Learn to estimate the number of operations performed by the algorithm, and the complexity will naturally follow. Every time you write a loop, pause for a moment and ask yourself: "How does the number of operations change if the input size doubles?" If you build that habit, complexity analysis will eventually become second nature.
+
+# Day 3 - Space Complexity & Complete Algorithm Analysis
+
+## 🎯 Key Takeaways
+
+- Every algorithm has two major costs:
+  - Time Complexity → How the number of operations grows as input size increases.
+  - Space Complexity → How the extra memory usage grows as input size increases.
+
+- Space Complexity focuses mainly on additional memory allocated by the algorithm (auxiliary space).
+
+- Creating a few variables does not depend on input size, so it is considered constant space: O(1).
+
+Example:
+int max;
+int left;
+int right;
+
+Whether the input has 10 elements or 10 million elements, these variables remain constant.
+
+- Creating additional data structures that grow with input size usually results in O(n) space.
+
+Example:
+Creating a new array with the same size as the input.
+
+- In-place algorithms modify the existing data structure instead of creating additional copies.
+
+Example:
+Reverse Array using swapping:
+Time: O(n)
+Space: O(1)
+
+- Extra memory usage is not always bad. Sometimes we intentionally use more memory to improve performance, readability, or safety.
+
+- The best algorithm depends on constraints. There is rarely a universally perfect solution.
+
+- Optimizing software is about understanding trade-offs:
+  - Speed
+  - Memory
+  - Maintainability
+  - Data safety
+
+---
+
+## 💼 Connections to My Experience
+
+- Caching systems like Redis use additional memory to reduce lookup time.
+
+- Database indexes consume additional storage but make queries much faster.
+
+- Dictionary<TKey, TValue> uses more memory than a simple List<T>, but provides faster lookups.
+
+- Creating copies of data can be useful when immutability or preserving original state is important.
+
+- Large-scale systems often intentionally duplicate data to improve performance.
+
+Examples:
+  - Caches
+  - Read replicas
+  - Materialized views
+
+These are all examples of time vs space trade-offs.
+
+---
+
+## ⚠️ Common Mistakes
+
+- Thinking lower space complexity is always better.
+
+Wrong:
+"Always choose O(1) space."
+
+Correct:
+"Choose based on system requirements."
+
+---
+
+- Counting input data as extra space.
+
+Example:
+
+int FindMax(int[] nums)
+
+nums is input.
+
+The extra variable:
+
+int max
+
+is auxiliary space.
+
+---
+
+- Assuming every Dictionary has O(n) space without considering unique values.
+
+Better explanation:
+
+Space = O(k)
+
+where k = number of unique elements.
+
+Worst case:
+k = n
+
+Therefore:
+O(n)
+
+---
+
+- Forgetting recursion uses memory.
+
+Recursive calls consume stack space.
+
+---
+
+## 🧠 Interview Nuggets
+
+- Always analyze both time and space complexity.
+
+A strong answer:
+
+"This solution runs in O(n) time because every element is visited once. It uses O(1) extra space because only a fixed number of variables are created."
+
+---
+
+- Explain trade-offs.
+
+Instead of saying:
+
+"This solution is better because it uses less memory."
+
+Say:
+
+"This solution reduces memory usage, but it modifies the input. If preserving original data is required, using extra memory may be preferable."
+
+---
+
+- For HashMap/Dictionary solutions:
+
+Mention:
+
+"Average lookup is O(1), but we are trading additional memory for faster access."
+
+---
+
+- Optimization depends on constraints:
+  - Small input → simpler solution may be acceptable.
+  - Large input → better complexity matters more.
+  - Memory-limited systems → reduce allocations.
+
+---
+
+## 📝 Revision Questions
+
+1. What is the difference between Time Complexity and Space Complexity?
+
+2. Why is creating one variable O(1) space?
+
+3. Why is creating another array usually O(n) space?
+
+4. What does "in-place algorithm" mean?
+
+5. Why might an O(n) space solution be better than an O(1) space solution?
+
+6. How does caching demonstrate a time vs space trade-off?
+
+7. What is the difference between O(n) and O(k) space for a Dictionary?
+
+---
+
+## ⭐ Mentor Notes
+
+Do not think of optimization as only reducing time or reducing memory.
+
+Good engineers ask:
+
+"What constraint am I optimizing for?"
+
+Sometimes spending more memory gives a better system.
+
+Sometimes saving memory is more important.
+
+The goal is not to write the algorithm with the smallest Big-O values everywhere. The goal is to understand the trade-offs and choose the right approach for the situation.
