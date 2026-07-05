@@ -275,3 +275,360 @@ Sometimes spending more memory gives a better system.
 Sometimes saving memory is more important.
 
 The goal is not to write the algorithm with the smallest Big-O values everywhere. The goal is to understand the trade-offs and choose the right approach for the situation.
+
+# Day 4 - Arrays
+
+## 🎯 Key Takeaways
+
+- An Array is a fundamental data structure that stores elements in contiguous memory locations.
+
+- Arrays provide fast access using indexes because the memory address of any element can be calculated directly.
+
+Example:
+
+Address = Base Address + (Index × Element Size)
+
+Because of this:
+
+Array Read by Index:
+Time Complexity: O(1)
+
+---
+
+- Searching an unsorted array requires checking elements one by one.
+
+Example:
+
+Find 7:
+
+[3, 5, 2, 8, 7]
+
+The array does not know where value 7 exists.
+
+Worst case:
+Check every element.
+
+Time Complexity: O(n)
+
+---
+
+- Array insertion depends on the position.
+
+Insert at end:
+
+Usually:
+O(1)
+
+Insert at beginning/middle:
+
+Elements need to shift.
+
+Example:
+
+Before:
+[2,3,4,5]
+
+Insert 1:
+
+Shift:
+[_,2,3,4,5]
+
+After:
+[1,2,3,4,5]
+
+Time Complexity: O(n)
+
+---
+
+- Array deletion also requires shifting elements.
+
+Example:
+
+Before:
+[1,2,3,4]
+
+Remove 2:
+
+Temporary:
+[1,_,3,4]
+
+Shift:
+[1,3,4]
+
+Time Complexity: O(n)
+
+---
+
+- Static arrays have a fixed size.
+
+Example:
+
+int[] nums = new int[10];
+
+Size cannot automatically increase.
+
+---
+
+- Dynamic arrays solve this limitation.
+
+Example:
+
+List<int>
+
+Internally:
+- Uses an array.
+- Tracks Count and Capacity.
+- Creates a bigger array when capacity is full.
+- Copies old elements into the new array.
+
+---
+
+- List<T>.Add()
+
+Usually:
+O(1)
+
+When resize happens:
+O(n)
+
+Overall:
+Amortized O(1)
+
+---
+
+- Array solutions commonly involve:
+
+1. Traversal
+2. Index manipulation
+3. Maintaining state
+4. Two pointers
+5. In-place modification
+
+---
+
+## 💼 Connections to My Experience
+
+- C# arrays provide fast index-based access because they use contiguous memory.
+
+- List<T> is not a completely different structure; it is a dynamic array built on top of an internal array.
+
+- Choosing between Array and List<T> depends on requirements:
+
+Array:
+- Fixed size
+- Lower overhead
+- Good when size is known
+
+List<T>:
+- Flexible size
+- Easier insertion/removal at end
+- Handles resizing automatically
+
+---
+
+- Similar ideas exist in system design:
+
+Pre-allocated resources:
+- Faster access
+- Less flexibility
+
+Dynamic allocation:
+- More flexible
+- Additional management cost
+
+---
+
+- Understanding memory layout helps explain performance differences in real applications.
+
+---
+
+## ⚠️ Common Mistakes
+
+- Thinking array access is O(1) because "the computer is fast".
+
+Correct reason:
+
+The address is mathematically calculated using the index.
+
+---
+
+- Thinking insertion is always O(1).
+
+Insertion depends on location.
+
+End:
+Usually O(1)
+
+Beginning:
+O(n)
+
+---
+
+- Forgetting that arrays cannot actually shrink.
+
+Removing an element usually means:
+- shifting values
+- ignoring unused space
+- or creating a new array
+
+---
+
+- Assuming lower memory usage is always better.
+
+Example:
+
+Running Sum
+
+Extra Array:
+
+Time: O(n)
+Space: O(n)
+
+Benefits:
+Preserves original data.
+
+In-place:
+
+Time: O(n)
+Space: O(1)
+
+Benefits:
+Uses less memory.
+
+Both can be correct depending on requirements.
+
+---
+
+## 🧠 Interview Nuggets
+
+- Always explain why an operation has its complexity.
+
+Weak answer:
+
+"Array access is O(1)."
+
+Strong answer:
+
+"Array access is O(1) because arrays store elements continuously in memory, so the address can be calculated directly from the index."
+
+---
+
+- For array traversal:
+
+One pass usually means:
+
+Time: O(n)
+
+---
+
+- Multiple sequential passes:
+
+Example:
+
+for loop
+
++
+
+another for loop
+
+
+O(n + n)
+
+=
+
+O(2n)
+
+=
+
+O(n)
+
+---
+
+- For additional arrays:
+
+Input size n:
+
+Create result[n]
+
+Space:
+
+O(n)
+
+---
+
+- For fixed variables:
+
+int left;
+int right;
+int count;
+
+Space:
+
+O(1)
+
+---
+
+- Two Pointer Pattern:
+
+Use multiple indexes to process arrays efficiently.
+
+Examples:
+
+left/right pointers:
+
+Used for:
+- reversing arrays
+- removing elements
+- searching pairs
+
+---
+
+## 📝 Revision Questions
+
+1. Why is array index access O(1)?
+
+2. Why does searching an unsorted array take O(n)?
+
+3. Why is inserting at the beginning expensive?
+
+4. What happens internally when List<T> capacity is full?
+
+5. Difference between Count and Capacity?
+
+6. Why is List<T>.Add() called amortized O(1)?
+
+7. When would you prefer using extra memory instead of modifying an array in-place?
+
+8. Why does nums[nums[i]] still take O(1) time?
+
+9. What problem does the two pointer pattern solve?
+
+---
+
+## ⭐ Mentor Notes
+
+Arrays look simple, but they introduce the most important ideas in problem solving:
+
+- accessing data efficiently
+- moving through data
+- managing memory
+- modifying data safely
+
+Many advanced structures are built on top of these same ideas.
+
+Mastering arrays is not about memorizing operations.
+
+It is about understanding the trade-offs:
+
+Fast access vs expensive modification.
+
+Fixed memory vs dynamic growth.
+
+Saving memory vs preserving data.
+
+The same trade-offs appear later in:
+- Linked Lists
+- HashMaps
+- Trees
+- Databases
+- Distributed Systems
