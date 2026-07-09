@@ -632,3 +632,193 @@ The same trade-offs appear later in:
 - Trees
 - Databases
 - Distributed Systems
+
+# Day 6 - Two Pointers Recognition
+
+## 🎯 Core Idea
+
+Use two indexes to process data efficiently by eliminating unnecessary work.
+
+Goal:
+
+Brute Force: O(n²) → Optimized: O(n)
+
+Every pointer movement should have a reason.
+
+---
+
+## 🔍 When To Use Two Pointers
+
+### 1. Sorted Array + Pair Search
+
+Signals:
+- Find pair
+- Target sum
+- Closest sum
+
+Pattern:
+
+left → ← right
+
+Example:
+- Two Sum II
+
+Logic:
+
+sum too small → left++
+
+sum too large → right--
+
+---
+
+### 2. Compare From Both Ends
+
+Signals:
+- Reverse
+- Palindrome
+- Symmetric comparison
+
+Pattern:
+
+left → ← right
+
+Examples:
+- Reverse String
+- Valid Palindrome
+
+---
+
+### 3. Modify Array In-place
+
+Signals:
+- Remove elements
+- Move elements
+- Remove duplicates
+
+Pattern:
+
+fast = explorer/scanner
+
+slow = builder/result position
+
+Examples:
+- Move Zeroes
+- Remove Duplicates
+
+---
+
+## ⏱️ Complexity
+
+Usually:
+
+Time: O(n)
+
+Reason:
+Each element is processed at most once.
+
+Space: O(1)
+
+Reason:
+Only pointer variables are used.
+
+---
+
+## 🧠 Important Mindsets
+
+### Opposite Direction
+
+left starts beginning
+
+right starts end
+
+Used when processing both sides.
+
+---
+
+### Same Direction
+
+fast:
+Finds useful values
+
+slow:
+Builds result area
+
+
+Do not memorize slow meaning.
+
+Examples:
+
+Move Zeroes:
+slow = next non-zero position
+
+Remove Duplicates:
+slow = last unique position
+
+---
+
+## ⚠️ Common Mistakes
+
+❌ Two pointers does not mean O(n²)
+
+Two moving indexes:
+O(n)
+
+Nested loops:
+O(n²)
+
+
+---
+
+❌ Do not force Two Pointers everywhere.
+
+Frequency/counting problems:
+
+Usually HashMap.
+
+---
+
+❌ Do not move pointers randomly.
+
+Pointer movement should eliminate possibilities.
+
+---
+
+## ✅ Problems Completed
+
+344. Reverse String
+
+Pattern:
+Opposite pointers
+
+
+125. Valid Palindrome
+
+Pattern:
+Opposite pointers + skipping
+
+
+167. Two Sum II
+
+Pattern:
+Sorted + pair search
+
+
+283. Move Zeroes
+
+Pattern:
+Same direction pointers
+
+
+26. Remove Duplicates
+
+Pattern:
+Same direction + sorted array
+
+
+---
+
+## ⭐ Key Line To Remember
+
+Two Pointers is not about having two variables.
+
+It is about using two positions to reduce unnecessary work.
