@@ -822,3 +822,180 @@ Same direction + sorted array
 Two Pointers is not about having two variables.
 
 It is about using two positions to reduce unnecessary work.
+
+# Day 7 - Hashing / HashMap
+
+## Core Idea
+
+Hashing uses a hash function to generate a hash code from a key.
+
+Key → Hash Function → Hash Code → Bucket
+
+Hash-based structures provide average O(1) lookup.
+
+Collisions can occur when multiple keys map to the same bucket.
+
+---
+
+## When To Think Hashing
+
+Signals:
+
+* Frequency / counting
+* "Have I seen this before?"
+* Duplicate detection
+* Fast key-based lookup
+* Key → Value mapping
+
+---
+
+## Dictionary vs HashSet
+
+### Dictionary
+
+Use when a value needs associated information.
+
+Key → Value
+
+Examples:
+
+Character → Frequency
+
+Number → Index
+
+### HashSet
+
+Use when only existence matters.
+
+Question:
+
+"Have I seen this value before?"
+
+Rule:
+
+Need Key → Value → Dictionary
+
+Need existence only → HashSet
+
+---
+
+## Complexity
+
+Dictionary / HashSet:
+
+Lookup: Average O(1)
+
+Insert: Average O(1)
+
+Worst case can degrade due to collisions.
+
+Space: Usually O(n)
+
+---
+
+## HashMap Trade-off
+
+Brute Force:
+
+Time: O(n²)
+
+Space: O(1)
+
+HashMap:
+
+Time: O(n) average
+
+Space: O(n)
+
+We trade extra memory for faster lookup.
+
+---
+
+## Problems Completed
+
+### 217. Contains Duplicate
+
+Signal:
+
+Duplicate / Seen before
+
+Pattern:
+
+HashSet
+
+Time: O(n)
+
+Space: O(n)
+
+### 242. Valid Anagram
+
+Signal:
+
+Character frequency
+
+Pattern:
+
+Dictionary
+
+Store:
+
+Character → Frequency
+
+Time: O(n)
+
+Space: O(k)
+
+### 1. Two Sum
+
+Signal:
+
+Need fast lookup for required partner
+
+Pattern:
+
+Dictionary
+
+Mental Model:
+
+needed = target - current
+
+"Have I already seen needed?"
+
+Store:
+
+Number → Index
+
+Time: O(n)
+
+Space: O(n)
+
+---
+
+## Important Corrections
+
+Two Pointers does NOT require sorted data.
+
+Sorted data is important for pair-search Two Pointer problems because it tells us which pointer to move.
+
+Dictionary does NOT always store Number → Index.
+
+What it stores depends on the problem.
+
+Examples:
+
+Anagram → Character → Frequency
+
+Two Sum → Number → Index
+
+---
+
+## Key Lines To Remember
+
+Frequency / Count → Dictionary
+
+Seen Before? → HashSet
+
+Need fast lookup? → Consider Hashing
+
+Hashing often trades O(n) space for faster O(1) average lookup.
+
